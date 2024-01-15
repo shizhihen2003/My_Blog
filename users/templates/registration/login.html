@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost&amp;family=Playfair+Display:wght@400;700&amp;display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- 网页css导入 -->
+    <link rel="stylesheet" href="{% static 'css/head.css' %}">
+    <link rel="stylesheet" href="{% static 'css/page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/body.css' %}">
+    <link rel="stylesheet" href="{% static 'css/foot.css' %}">
+</head>
+
+<body>
+<div class="all">
+    <div class="head">
+        <div class="left">
+            <!-- 判断用户是否登录，并相应显示登录/注册或用户名/登出 -->
+            {% if user.is_authenticated %}
+                {{ user.username }}.
+                <!-- 登出操作使用POST方法 -->
+                <form action="{% url 'users:logout' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Log out" class="log_out_button">
+                </form>
+            {% else %}
+                <a href="{% url 'users:login' %}">Log In</a>
+                <a href="{% url 'users:register' %}">Sign Up</a>
+            {% endif %}
+        </div>
+        <div class="name">
+            My Blog.
+        </div>
+        <div class="right">
+            <a href="#">Search</a>
+        </div>
+    </div>
+    <div class="pages">
+        <ul>
+            <li><a href="{% url 'My_Blogs:index' %}">Home page</a></li>
+            <li><a href="{% url 'My_Blogs:topics' %}">Topics</a></li>
+            <li><a href="{% url 'My_Blogs:contact us' %}">Contact us</a></li>
+        </ul>
+    </div>
+    <div id="bg_img">
+        <div id="messageContainer">
+            <p id="messageText"></p>
+        </div>
+        <button id="toggleBlur" class="button">Toggle Blur Effect</button>
+        <div id="filter">
+
+
+            <div class="log_in">
+
+                <!-- Django 登录表单开始 -->
+                <form action="{% url 'users:login' %}" method="POST">
+                    {% csrf_token %}
+                    <label for="username">Username: <br></label>
+                    <input type="text" name="username" id="username" placeholder="Username" required><br>
+                    <label for="password">Password: <br></label>
+                    <input type="password" name="password" id="password" placeholder="Password" required><br>
+                    <button>Log in</button>
+                </form>
+                <!-- Django 登录表单结束 -->
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="link">
+            <ul>
+                <li><a href="https://im.qq.com/" class="qq-link">qq<span></span></a></li>
+                <li><a href="https://weixin.qq.com/" class="wechat-link">微信<span></span></a></li>
+                <li><a href="https://m.weibo.cn/" class="wb-link">微博<span></span></a></li>
+                <li><a href="https://www.csdn.net/" class="csdn-link">CSDN<span></span></a></li>
+            </ul>
+        </div>
+        <div class="detail">
+            <p>Copyright ©2023 All rights reserved | This blog is made with by 辰心</p>
+            <p><a href="">Terms & Conditions</a>/<a href="">Privacy Policy</a></p>
+        </div>
+    </div>
+</div>
+<!-- 模糊背景 -->
+<div id="modalBackground" class="modal-background"></div>
+<div id="searchModal" class="modal">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button id="searchButton">Search</button>
+    </div>
+</div>
+<button id="closeModal" class="close-button hidden"><i class="fas fa-times"></i></button>
+
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/Toggle Blur Effect.js' %}"></script>
+<script>
+    // 监听文档加载完成事件，当整个页面完全加载后执行函数内的代码
+    document.addEventListener('DOMContentLoaded', (event) => {
+
+        // 使用Django模板标签检查是否有消息传递给前端
+        {% if messages %}
+            // 声明一个变量来存储所有消息文本
+            let messageText = '';
+
+            // 遍历Django传递过来的所有消息
+            {% for message in messages %}
+                // 将每条消息加到messageText变量中，并在每条消息后面添加换行标签<br>
+                messageText += '{{ message }}<br>';
+            {% endfor %}
+
+            // 获取id为'messageText'的HTML元素，并设置其内容为messageText变量的值
+            document.getElementById('messageText').innerHTML = messageText;
+            // 将id为'messageContainer'的元素显示出来，以展示消息内容
+            document.getElementById('messageContainer').style.display = 'block';
+
+            // 设置定时器，在5秒后执行函数
+            setTimeout(function () {
+                // 将消息容器隐藏，不再显示消息
+                document.getElementById('messageContainer').style.display = 'none';
+            }, 5000); // 这里设置定时器的时间为5000毫秒，即5秒
+        {% endif %}
+    });
+</script>
+
+</body>
+
+</html>

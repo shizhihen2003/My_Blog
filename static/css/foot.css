@@ -1,0 +1,62 @@
+/* 设置类名为'footer'的元素的样式，用于页面底部区域 */
+.footer {
+    margin-top: 60px; /* 上边距为60像素 */
+    padding: 20px 40px; /* 内边距，上下20像素，左右40像素 */
+    text-align: center; /* 文本居中对齐 */
+    /* box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1); */ /* 注释掉的阴影效果 */
+}
+
+/* 设置类名为'link'下的<ul>元素的样式，用于布局链接 */
+.link ul {
+    list-style-type: none; /* 去除列表符号 */
+    padding: 0; /* 无内边距 */
+    display: flex; /* 使用弹性盒模型 */
+    justify-content: center; /* 项居中对齐 */
+    gap: 20px; /* 项之间的间隔为20像素 */
+}
+
+/* 设置类名为'link'下的<a>元素的默认样式 */
+.link a {
+    color: black; /* 文本颜色设置为黑色 */
+    transition: color 0.3s; /* 颜色变化时的过渡效果，持续0.3秒 */
+    /* 平滑颜色过渡 */
+}
+
+/* 设置类名为'link'下的<a>元素在鼠标悬停时的样式 */
+.link a:hover {
+    color: #c1a57b; /* 鼠标悬停时文本颜色改变 */
+    /* 鼠标悬停时改变颜色 */
+}
+
+/* 设置类名为'detail'下的<p>元素的外边距 */
+.detail p {
+    margin: 10px 0; /* 上下外边距为10像素，左右为0 */
+}
+
+/* 设置类名为'link'下的<ul>元素下的<li>元素内<a>元素前的伪元素样式 */
+.link ul li a::before {
+    content: ''; /* 无内容 */
+    display: inline-block; /* 行内块元素 */
+    width: 20px; /* 宽度为20像素 */
+    height: 20px; /* 高度为20像素 */
+    background-size: contain; /* 背景大小适应 */
+    background-repeat: no-repeat; /* 背景不重复 */
+    margin-right: 5px; /* 右边距为5像素 */
+}
+
+/* 分别设置不同社交链接的背景图片 */
+.qq-link::before {
+    background-image: url(../image/qq_icon.png); /* QQ图标 */
+}
+
+.wechat-link::before {
+    background-image: url(../image/wechat_icon.png); /* 微信图标 */
+}
+
+.wb-link::before {
+    background-image: url(../image/wb_icon.png); /* 微博图标 */
+}
+
+.csdn-link::before {
+    background-image: url(../image/csdn_icon.png); /* CSDN图标 */
+}

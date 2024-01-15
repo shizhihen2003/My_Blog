@@ -1,0 +1,47 @@
+/* 设置ID为'filter'的元素的内边距 */
+#filter {
+    padding: 15px; /* 所有方向的内边距设置为15像素 */
+}
+
+/* 设置ID为'sidebar'的元素的样式 */
+#sidebar {
+    display: block; /* 使元素以块状形式显示 */
+    width: 98%; /* 宽度设置为父元素宽度的98% */
+    position: relative; /* 相对定位 */
+}
+
+/* 设置ID为'topics'的元素的文本对齐方式 */
+#topics {
+    text-align: center; /* 文本居中对齐 */
+}
+
+/* 设置类名为'row'的元素的样式，通常用于布局行 */
+.row {
+    margin: 20px 0; /* 上下外边距为20像素，左右为0 */
+    display: flex; /* 使用弹性盒模型 */
+    justify-content: space-between; /* 项目之间的空间均匀分布 */
+}
+
+/* 设置类名为'topic'的元素的样式，通常用于主题或卡片 */
+.topic {
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+    border-radius: 10px; /* 圆角边框 */
+    width: 300px; /* 宽度为300像素 */
+    height: 300px; /* 高度为300像素 */
+    /* box-shadow: 0 0 25px rgba(0, 0, 0, 0.25); */ /* 注释的阴影效果 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 平滑的变换和阴影过渡效果 */
+    /* 这会使变化更平滑 */
+}
+
+/* 设置类名为'topic'下的<img>元素的样式 */
+.topic img {
+    width: 250px; /* 宽度为250像素 */
+    height: 150px; /* 高度为150像素 */
+    margin-top: 30px; /* 上边距为30像素 */
+    border-radius: 20px; /* 圆角边框 */
+}
+
+/* 设置类名为'topic'下的<h2>元素的外边距 */
+.topic h2 {
+    margin: 10px; /* 所有方向的外边距为10像素 */
+}

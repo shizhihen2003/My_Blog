@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>topic</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost&amp;family=Playfair+Display:wght@400;700&amp;display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- 网页css导入 -->
+    <link rel="stylesheet" href="{% static 'css/head.css' %}">
+    <link rel="stylesheet" href="{% static 'css/page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/body.css' %}">
+    <link rel="stylesheet" href="{% static 'css/foot.css' %}">
+    <link rel="stylesheet" href="{% static 'css/topic.css' %}">
+</head>
+
+<body>
+<div class="all">
+    <div class="head">
+        <div class="left">
+            <!-- 判断用户是否登录，并相应显示登录/注册或用户名/登出 -->
+            {% if user.is_authenticated %}
+                {{ user.username }}.
+                <!-- 登出操作使用POST方法 -->
+                <form action="{% url 'users:logout' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Log out" class="log_out_button">
+                </form>
+            {% else %}
+                <a href="{% url 'users:login' %}">Log In</a>
+                <a href="{% url 'users:register' %}">Sign Up</a>
+            {% endif %}
+        </div>
+        <div class="name">
+            My Blog.
+        </div>
+        <div class="right">
+            <a href="#">Search</a>
+        </div>
+    </div>
+    <div class="pages">
+        <ul>
+            <li><a href="{% url 'My_Blogs:index' %}">Home page</a></li>
+            <li><a href="{% url 'My_Blogs:topics' %}">Topics</a></li>
+            <li><a href="{% url 'My_Blogs:contact us' %}">Contact us</a></li>
+        </ul>
+    </div>
+
+
+    <div id="bg_img">
+        <div id="filter">
+            <div id="main">
+                <div class="title">
+                    <h1>1.1 冒泡排序</h1>
+                    <h2>分类 算法</h2>
+                </div>
+                <div class="passages">
+
+                    <p>冒泡排序（Bubble
+                        Sort）也是一种简单直观的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢"浮"到数列的顶端。
+                    </p>
+                    <p>作为最简单的排序算法之一，冒泡排序给我的感觉就像 Abandon
+                        在单词书里出现的感觉一样，每次都在第一页第一位，所以最熟悉。冒泡排序还有一种优化算法，就是立一个flag，当在一趟序列遍历中元素没有发生交换，则证明该序列已经有序。但这种改进对于提升性能来说并没有什么太大作用。
+                    </p>
+                    <h2>1. 算法步骤</h2>
+                    <p>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p>
+                    <p>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</p>
+                    <p>针对所有的元素重复以上的步骤，除了最后一个。</p>
+                    <p>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
+                    <h2>2. 动图演示</h2>
+                    <img src="{% static 'image/bubbleSort.gif' %}" alt=""><br>
+                    <h2>3. 什么时候最快</h2>
+                    <p>当输入的数据已经是正序时（都已经是正序了，我还要你冒泡排序有何用啊）。</p>
+                    <h2>4. 什么时候最慢</h2>
+                    <p>当输入的数据是反序时（写一个 for 循环反序输出数据不就行了，干嘛要用你冒泡排序呢，我是闲的吗）。</p>
+
+                </div>
+
+
+            </div>
+
+
+            <div id="sidebar">
+                <div class="user_img">
+                    <img src="{% static 'image/img.jpg' %}" alt="">
+                </div>
+                <div class="user_info">
+                    <p class="name">辰心</p>
+                    <p class="show">
+                        Far far away behind the Word Mountains far from Away<br>
+                        Far far away, behind the word mountains, far from the.
+                    </p>
+                </div>
+                <div class="user_link">
+                    <ul>
+                        <li><a href="" class="qq-link"><span></span></a></li>
+                        <li><a href="" class="wechat-link"><span></span></a></li>
+                        <li><a href="" class="wb-link"><span></span></a></li>
+                        <li><a href="" class="csdn-link"><span></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="link">
+            <ul>
+                <li><a href="https://im.qq.com/" class="qq-link">qq<span></span></a></li>
+                <li><a href="https://weixin.qq.com/" class="wechat-link">微信<span></span></a></li>
+                <li><a href="https://m.weibo.cn/" class="wb-link">微博<span></span></a></li>
+                <li><a href="https://www.csdn.net/" class="csdn-link">CSDN<span></span></a></li>
+            </ul>
+        </div>
+        <div class="detail">
+            <p>Copyright ©2023 All rights reserved | This blog is made with by 辰心</p>
+            <p><a href="">Terms & Conditions</a>/<a href="">Privacy Policy</a></p>
+        </div>
+    </div>
+</div>
+
+<!-- 模糊背景 -->
+<div id="modalBackground" class="modal-background"></div>
+<div id="searchModal" class="modal">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button id="searchButton">Search</button>
+    </div>
+</div>
+<button id="closeModal" class="close-button hidden"><i class="fas fa-times"></i></button>
+
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/topic.js' %}"></script>
+</body>
+
+</html>

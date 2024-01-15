@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topics</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost&amp;family=Playfair+Display:wght@400;700&amp;display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- 网页css导入 -->
+    <link rel="stylesheet" href="{% static 'css/head.css' %}">
+    <link rel="stylesheet" href="{% static 'css/page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/body.css' %}">
+    <link rel="stylesheet" href="{% static 'css/foot.css' %}">
+    <link rel="stylesheet" href="{% static 'css/topic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/topics.css' %}">
+</head>
+
+<body>
+<div class="all">
+    <div class="head">
+        <div class="left">
+            <!-- 判断用户是否登录，并相应显示登录/注册或用户名/登出 -->
+            {% if user.is_authenticated %}
+                {{ user.username }}.
+                <!-- 登出操作使用POST方法 -->
+                <form action="{% url 'users:logout' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Log out" class="log_out_button">
+                </form>
+            {% else %}
+                <a href="{% url 'users:login' %}">Log In</a>
+                <a href="{% url 'users:register' %}">Sign Up</a>
+            {% endif %}
+        </div>
+        <div class="name">
+            My Blog.
+        </div>
+        <div class="right">
+            <a href="#">Search</a>
+        </div>
+    </div>
+    <div class="pages">
+        <ul>
+            <li><a href="{% url 'My_Blogs:index' %}">Home page</a></li>
+            <li><a href="{% url 'My_Blogs:topics' %}">Topics</a></li>
+            <li><a href="{% url 'My_Blogs:contact us' %}">Contact us</a></li>
+        </ul>
+    </div>
+
+
+    <div id="bg_img">
+        <div id="filter">
+            <div id="sidebar">
+                <div class="user_img">
+                    <img src="{% static 'image/img.jpg' %}" alt="">
+                </div>
+                <div class="user_info">
+                    <p class="name">辰心</p>
+                    <p class="show">
+                        Far far away behind the Word Mountains far from Away<br>
+                        Far far away, behind the word mountains, far from the.
+                    </p>
+                </div>
+                <div class="user_link">
+                    <ul>
+                        <li><a href="https://im.qq.com/" class="qq-link"><span></span></a></li>
+                        <li><a href="https://weixin.qq.com/" class="wechat-link"><span></span></a></li>
+                        <li><a href="https://m.weibo.cn/" class="wb-link"><span></span></a></li>
+                        <li><a href="https://www.csdn.net/" class="csdn-link"><span></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="topics">
+                <div class="row">
+                    <div class="topic">
+                        <a href="{% url 'My_Blogs:topic' %}">
+                            <img src="{% static 'image/img.jpg' %}" alt="">
+                            <h2>冒泡排序</h2>
+                        </a>
+                        <p>作者很懒，没有留下备注～</p>
+                    </div>
+                    <div class="topic">
+                        <a href="{% url 'My_Blogs:topic' %}">
+                            <img src="{% static 'image/img.jpg' %}" alt="">
+                            <h2>冒泡排序</h2>
+                        </a>
+                        <p>作者很懒，没有留下备注～</p>
+                    </div>
+                    <div class="topic">
+                        <a href="{% url 'My_Blogs:topic' %}">
+                            <img src="{% static 'image/img.jpg' %}" alt="">
+                            <h2>冒泡排序</h2>
+                        </a>
+                        <p>作者很懒，没有留下备注～</p>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="topic">
+                        <img src="./image/img.jpg" alt="">
+                        <h2><a href="./topic.html">冒泡排序</a></h2>
+                        <p>作者很懒，没有留下备注～</p>
+                    </div>
+                    <div class="topic">
+                        <img src="./image/img.jpg" alt="">
+                        <h2><a href="./topic.html">冒泡排序</a></h2>
+                        <p>作者很懒，没有留下备注～</p>
+                    </div>
+                    <div class="topic">
+                        <img src="./image/img.jpg" alt="">
+                        <h2><a href="./topic.html">冒泡排序</a></h2>
+                        <p>作者很懒，没有留下备注～</p>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="link">
+            <ul>
+                <li><a href="https://im.qq.com/" class="qq-link">qq<span></span></a></li>
+                <li><a href="https://weixin.qq.com/" class="wechat-link">微信<span></span></a></li>
+                <li><a href="https://m.weibo.cn/" class="wb-link">微博<span></span></a></li>
+                <li><a href="https://www.csdn.net/" class="csdn-link">CSDN<span></span></a></li>
+            </ul>
+        </div>
+        <div class="detail">
+            <p>Copyright ©2023 All rights reserved | This blog is made with by 辰心</p>
+            <p><a href="">Terms & Conditions</a>/<a href="">Privacy Policy</a></p>
+        </div>
+    </div>
+</div>
+<!-- 模糊背景 -->
+<div id="modalBackground" class="modal-background"></div>
+<div id="searchModal" class="modal">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button id="searchButton">Search</button>
+    </div>
+</div>
+<button id="closeModal" class="close-button hidden"><i class="fas fa-times"></i></button>
+
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/topics.js' %}"></script>
+</body>
+
+</html>

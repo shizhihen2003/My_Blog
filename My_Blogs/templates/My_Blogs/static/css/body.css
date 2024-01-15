@@ -1,0 +1,274 @@
+/* 设置整个网页的基本样式 */
+body {
+    font-family: "Jost", sans-serif; /* 设定全局字体为Jost，若找不到则使用sans-serif字体 */
+    background-color: rgb(240, 240, 240); /* 设置页面背景颜色为浅灰色，RGB值为(240, 240, 240) */
+    margin: 0; /* 移除body元素默认的外边距 */
+    padding: 0; /* 移除body元素默认的内边距 */
+}
+
+/* 设置具有类名'body'的元素的样式 */
+.body {
+    background-image: url(../image/girl_hello.jpeg); /* 设置背景图像，路径指向'girl_hello.jpeg' */
+    background-size: cover; /* 背景图片覆盖整个元素，确保图片完整显示 */
+    background-position: center; /* 背景图片居中对齐，确保焦点在中心 */
+    height: 500px; /* 设置元素高度为500像素 */
+    position: relative; /* 设置元素为相对定位，为子元素绝对定位提供参考 */
+    border-radius: 20px; /* 设置元素边框为圆角，半径为20像素 */
+}
+
+/* 设置ID为'toggleBlur'并且是button的元素的样式 */
+#toggleBlur.button {
+    position: absolute; /* 绝对定位，相对于最近的具有相对定位的祖先元素定位 */
+    top: 20px; /* 距离容器顶部20像素 */
+    right: 20px; /* 距离容器右边20像素 */
+    z-index: 100; /* 设置层叠顺序为100，确保按钮在其他元素之上 */
+    width: auto; /* 宽度自动，根据内容调整 */
+    padding: 10px; /* 内边距10像素 */
+    background-color: transparent; /* 背景颜色透明 */
+    border: 2px solid #ccc; /* 边框为2像素实线，颜色为浅灰色 */
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+    backdrop-filter: blur(10px); /* 背景模糊滤镜，模糊度为10像素 */
+}
+
+/* 设置ID为'filter'且有类名'blurred'的元素的样式 */
+#filter.blurred {
+    display: flex; /* 使用弹性盒布局，子元素水平排列 */
+    backdrop-filter: blur(5px); /* 背景模糊滤镜，模糊度为5像素 */
+}
+
+/* 设置类名为'words'的元素的样式，用于放置文本或链接 */
+.words {
+    position: absolute; /* 绝对定位，相对于最近的具有相对定位的祖先元素定位 */
+    bottom: 20px; /* 距离底部20像素 */
+    left: 40px; /* 距离左侧40像素 */
+}
+
+/* 设置类名为'words'下的<a>元素的样式 */
+.words a {
+    display: block; /* 块级显示，占据独立的行 */
+    font-size: 20px; /* 字体大小20像素 */
+    margin-top: 10px; /* 上边距10像素 */
+    color: white; /* 文本颜色白色 */
+}
+
+/* 设置ID为'bg_img'的元素的背景和样式 */
+#bg_img {
+    background-image: url('../image/girl_hello.jpeg'); /* 设置背景图像 */
+    background-repeat: no-repeat; /* 背景图片不重复显示 */
+    background-size: cover; /* 背景图片覆盖整个元素 */
+    background-position: center; /* 背景图片居中对齐 */
+    position: relative; /* 相对定位 */
+    border-radius: 20px; /* 圆角边框 */
+    overflow: hidden; /* 隐藏溢出的内容 */
+}
+
+/* 设置类名为'log_in'和'contact_us'的元素的共同样式 */
+.log_in,
+.contact_us {
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+    padding: 30px; /* 内边距30像素 */
+    width: 400px; /* 宽度400像素 */
+    margin: 100px auto; /* 上下外边距100像素，水平居中 */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.25); /* 阴影效果 */
+    border-radius: 10px; /* 圆角边框 */
+}
+
+/* 为类名为'contact_us'的元素设置特定的宽度 */
+.contact_us {
+    width: 600px; /* 宽度设置为600像素 */
+}
+
+/* 设置类名为'log_in'下的<form>元素的样式 */
+.log_in form {
+    display: flex; /* 使用弹性盒布局 */
+    flex-direction: column; /* 子元素垂直排列 */
+    gap: 15px; /* 项之间的间距为15像素 */
+}
+
+/* 设置类名为'contact_us'下的<form>元素的样式 */
+.contact_us form {
+    display: flex; /* 使用弹性盒布局 */
+    flex-direction: row; /* 子元素水平排列 */
+    flex-wrap: wrap; /* 允许子元素在容器内换行 */
+    gap: 30px; /* 项之间的间距为30像素 */
+}
+
+/* 设置类名为'log_in'和'contact_us'下的<label>元素的字体样式 */
+.log_in label,
+.contact_us label {
+    font-weight: bold; /* 字体加粗 */
+}
+
+/* 设置类名为'log_in'和'contact_us'下的<input>和<textarea>元素的样式 */
+.log_in input,
+.contact_us input,
+.contact_us textarea {
+    padding: 10px; /* 内边距10像素 */
+    border: 2px solid #ccc; /* 边框为2像素，颜色为浅灰色 */
+    border-radius: 5px; /* 圆角边框 */
+    font-size: 16px; /* 字体大小16像素 */
+    width: 93%; /* 宽度为父元素的93% */
+    background-color: transparent; /* 背景颜色透明 */
+}
+
+/* 设置类名为'contact_us'下的<input>元素的特定宽度 */
+.contact_us input {
+    width: 260px; /* 宽度为260像素 */
+}
+
+/* 设置类名为'contact_us'下的<textarea>元素的样式 */
+.contact_us textarea {
+    width: 580px; /* 宽度为580像素 */
+    height: 160px; /* 高度为160像素 */
+    resize: none; /* 禁止用户调整大小 */
+}
+
+/* 设置类名为'log_in'、'contact_us'和'button'的按钮的共同样式 */
+.log_in button,
+.contact_us button,
+.button {
+    padding: 10px 20px; /* 内边距，垂直10像素，水平20像素 */
+    background-color: #c1a57b; /* 按钮背景颜色为淡棕色 */
+    border: none; /* 无边框 */
+    border-radius: 5px; /* 圆角边框，半径为5像素 */
+    font-size: 16px; /* 字体大小为16像素 */
+    color: white; /* 字体颜色为白色 */
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+    width: 100%; /* 宽度填满父元素 */
+}
+
+/* 设置类名为'modal-background'的元素的样式，用于模态窗口的背景 */
+.modal-background {
+    display: none; /* 默认不显示 */
+    position: fixed; /* 固定定位 */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    width: 100%; /* 宽度占满屏幕 */
+    height: 100%; /* 高度占满屏幕 */
+    backdrop-filter: blur(16px); /* 背景模糊滤镜，模糊度16像素 */
+    z-index: 999; /* 层叠顺序，确保在页面内容之上 */
+}
+
+/* 设置类名为'modal'的元素的样式，用于模态窗口 */
+.modal {
+    display: none; /* 默认不显示 */
+    position: fixed; /* 固定定位 */
+    top: 33%; /* 顶部偏移，占屏幕高度的33% */
+    left: 50%; /* 左侧偏移，居中 */
+    transform: translate(-50%, -50%); /* 使用transform居中元素 */
+    z-index: 1000; /* 层叠顺序，确保在模态背景之上 */
+    padding: 20px; /* 内边距 */
+    background-color: transparent; /* 背景颜色透明 */
+    border-radius: 10px; /* 圆角边框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 阴影效果 */
+    text-align: center; /* 文本居中 */
+    width: 50%; /* 宽度为屏幕宽度的50% */
+    min-width: 300px; /* 最小宽度为300像素 */
+}
+
+/* 设置ID为'searchInput'的输入框样式 */
+#searchInput {
+    flex-grow: 1; /* 在弹性容器中扩展以填充空间 */
+    padding: 10px; /* 内边距 */
+    border: 1px solid #ddd; /* 边框 */
+    border-radius: 5px; /* 圆角边框 */
+    font-size: 16px; /* 字体大小 */
+    box-sizing: border-box; /* 边框和内边距的尺寸包含在宽度和高度内 */
+    background-color: transparent; /* 背景颜色透明 */
+}
+
+/* 设置ID为'closeModal'和'searchButton'的按钮样式 */
+#closeModal,
+#searchButton {
+    padding: 10px 20px; /* 内边距 */
+    background-color: #c1a57b; /* 背景颜色 */
+    color: white; /* 字体颜色 */
+    border: none; /* 无边框 */
+    border-radius: 5px; /* 圆角边框 */
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+    font-size: 16px; /* 字体大小 */
+    align-self: stretch; /* 自动调整以填充容器的高度 */
+}
+
+/* 设置ID为'closeModal'和'searchButton'的按钮在鼠标悬停时的样式 */
+#closeModal:hover,
+#searchButton:hover {
+    background-color: #af9468; /* 鼠标悬停时的背景色更深 */
+}
+
+/* 设置类名为'show'的元素的样式，用于显示元素 */
+.show {
+    display: block; /* 块级显示 */
+}
+
+/* 设置类名为'close-button'的按钮样式，通常用于关闭按钮 */
+.close-button {
+    position: fixed; /* 固定定位 */
+    top: 10px; /* 顶部间距 */
+    right: 10px; /* 右侧间距 */
+    border: none; /* 无边框 */
+    background: none; /* 无背景颜色 */
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+    z-index: 1001; /* 层叠顺序，确保在模态框之上 */
+    color: #c1a57b; /* 字体颜色 */
+}
+
+/* 设置类名为'close-button'下的<i>元素的样式 */
+.close-button i {
+    font-size: 30px; /* 字体大小为30像素，放大叉号图标 */
+}
+
+/* 设置类名为'search-container'的元素的样式，用于搜索容器 */
+.search-container {
+    display: flex; /* 使用弹性盒布局 */
+    align-items: center; /* 子元素垂直居中 */
+    justify-content: space-between; /* 子元素之间的间距平均分配 */
+    gap: 10px; /* 子元素之间的间距为10像素 */
+}
+
+/* 设置类名为'hidden'的元素的样式，用于隐藏元素 */
+.hidden {
+    display: none; /* 不显示 */
+}
+
+/* 设置类名为'input-group'的元素的样式，用于输入组 */
+.input-group {
+    margin-bottom: 25px; /* 下边距为25像素 */
+}
+
+/* 设置类名为'tip-bubble'的元素的样式，用于提示气泡 */
+.tip-bubble {
+    position: absolute; /* 绝对定位 */
+    padding: 5px 10px; /* 内边距 */
+    background-color: #f0f0f0; /* 背景颜色 */
+    border-radius: 5px; /* 圆角边框 */
+    border: 1px solid #ccc; /* 边框 */
+    display: none; /* 默认不显示 */
+    width: 374px; /* 宽度 */
+    z-index: 100; /* 层叠顺序，确保在元素上方 */
+}
+
+/* 设置文本输入框和密码输入框的样式 */
+input[type="text"],
+input[type="password"] {
+    position: relative; /* 相对定位 */
+    display: inline-block; /* 行内块显示 */
+    margin-bottom: 5px; /* 下边距为5像素 */
+}
+
+/* 设置类名为'visible'的元素的样式，用于显示元素 */
+.visible {
+    display: block; /* 块级显示 */
+}
+#messageContainer {
+            position: absolute;
+            left: 345px;
+            top: 15px;
+            font-size: 16px;
+            background-color: red;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            display: none; /* 默认不显示，只有当有消息时才显示 */
+        }

@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost&amp;family=Playfair+Display:wght@400;700&amp;display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- 网页css导入 -->
+    <link rel="stylesheet" href="{% static 'css/head.css' %}">
+    <link rel="stylesheet" href="{% static 'css/page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/body.css' %}">
+    <link rel="stylesheet" href="{% static 'css/foot.css' %}">
+</head>
+
+<body>
+<div class="all">
+    <div class="head">
+        <div class="left">
+            <!-- 判断用户是否登录，并相应显示登录/注册或用户名/登出 -->
+            {% if user.is_authenticated %}
+                {{ user.username }}.
+                <!-- 登出操作使用POST方法 -->
+                <form action="{% url 'users:logout' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Log out" class="log_out_button">
+                </form>
+            {% else %}
+                <a href="{% url 'users:login' %}">Log In</a>
+                <a href="{% url 'users:register' %}">Sign Up</a>
+            {% endif %}
+        </div>
+        <div class="name">
+            My Blog.
+        </div>
+        <div class="right">
+            <a href="#">Search</a>
+        </div>
+    </div>
+    <div class="pages">
+        <ul>
+            <li><a href="{% url 'My_Blogs:index' %}">Home page</a></li>
+            <li><a href="{% url 'My_Blogs:topics' %}">Topics</a></li>
+            <li><a href="{% url 'My_Blogs:contact us' %}">Contact us</a></li>
+        </ul>
+    </div>
+
+    <div id="bg_img">
+        <div id="messageContainer">
+            <p id="messageText"></p>
+        </div>
+        <button id="toggleBlur" class="button">Toggle Blur Effect</button>
+        <div id="filter">
+            <div class="log_in">
+                <form action="{% url 'users:register' %}" method="post" id="signupForm">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" placeholder="Username" required>
+                        <div id="usernameTip" class="tip-bubble hidden">Letters, digits and @/./+/-/_ only. Max 150
+                            characters.
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password1" id="password" placeholder="Password" required>
+                        <div id="passwordTip" class="tip-bubble hidden">At least 8 characters. Should not be too
+                            simple or entirely numeric.
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="password_confirmation">Password confirmation:</label>
+                        <input type="password" name="password2" id="password_confirmation"
+                               placeholder="Password confirmation" required>
+                        <div id="passwordConfirmationTip" class="tip-bubble hidden">Passwords must match.</div>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="link">
+            <ul>
+                <li><a href="https://im.qq.com/" class="qq-link">qq<span></span></a></li>
+                <li><a href="https://weixin.qq.com/" class="wechat-link">微信<span></span></a></li>
+                <li><a href="https://m.weibo.cn/" class="wb-link">微博<span></span></a></li>
+                <li><a href="https://www.csdn.net/" class="csdn-link">CSDN<span></span></a></li>
+            </ul>
+        </div>
+        <div class="detail">
+            <p>Copyright ©2023 All rights reserved | This blog is made with by 辰心</p>
+            <p><a href="">Terms & Conditions</a>/<a href="">Privacy Policy</a></p>
+        </div>
+    </div>
+</div>
+<!-- 模糊背景 -->
+<div id="modalBackground" class="modal-background"></div>
+<div id="searchModal" class="modal">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button id="searchButton">Search</button>
+    </div>
+</div>
+<button id="closeModal" class="close-button hidden"><i class="fas fa-times"></i></button>
+
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/Sign Up.js' %}"></script>
+<script src="{% static 'js/Toggle Blur Effect.js' %}"></script>
+<script>
+    // 当文档的内容完全加载并解析完毕后，执行以下函数
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // 创建一个字符串变量，用于存储所有要显示的消息
+        let messageText = '';
+
+        // 检查是否有 Django flash 消息传递给模板
+        {% if messages %}
+            // 如果有消息，遍历每条消息
+            {% for message in messages %}
+                // 将每条消息添加到 messageText 字符串中，并在每条消息后添加换行标签
+                messageText += '{{ message }}<br>';
+            {% endfor %}
+        {% endif %}
+
+        // 检查表单是否有错误
+        {% if form.errors %}
+            // 如果有错误，遍历表单中的每个字段
+            {% for field in form %}
+                // 对于每个字段，遍历其所有错误
+                {% for error in field.errors %}
+                    // 将字段的标签和错误信息添加到 messageText 字符串中，并在每条消息后添加换行标签
+                    messageText += '{{ field.label }}: {{ error }}<br>';
+                {% endfor %}
+            {% endfor %}
+            // 遍历非字段相关的所有错误
+            {% for error in form.non_field_errors %}
+                // 将错误信息添加到 messageText 字符串中，并在每条消息后添加换行标签
+                messageText += '{{ error }}<br>';
+            {% endfor %}
+        {% endif %}
+
+        // 如果 messageText 字符串不为空，即存在消息要显示
+        if (messageText) {
+            // 获取页面中 id 为 'messageText' 的元素，并设置其 HTML 内容为 messageText 字符串
+            document.getElementById('messageText').innerHTML = messageText;
+            // 获取页面中 id 为 'messageContainer' 的元素，使其可见
+            document.getElementById('messageContainer').style.display = 'block';
+            // 设置 messageContainer 元素的左边距为 260px
+            document.getElementById('messageContainer').style.left = '260px';
+
+            // 设置一个计时器，在 5 秒后执行函数
+            setTimeout(function () {
+                // 隐藏 messageContainer 元素
+                document.getElementById('messageContainer').style.display = 'none';
+            }, 5000); // 设置计时器时间为 5000 毫秒，即 5 秒
+        }
+    });
+</script>
+
+</body>
+
+</html>

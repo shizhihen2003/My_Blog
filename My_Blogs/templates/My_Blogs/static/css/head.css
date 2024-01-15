@@ -1,0 +1,54 @@
+/* 设置类名为'all'的元素的样式，通常用于主要内容区域 */
+.all {
+    background-color: white; /* 背景颜色设为白色 */
+    width: 900px; /* 宽度设置为900像素 */
+    margin: 25px auto; /* 垂直外边距为25像素，水平居中 */
+    padding: 60px; /* 内边距为60像素 */
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1); /* 上部阴影效果 */
+    /* 添加上部阴影 */
+}
+
+/* 设置所有<a>元素的默认样式 */
+a {
+    text-decoration: none; /* 去除下划线 */
+    color: #c1a57b; /* 文本颜色 */
+}
+.log_out_button{
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: #c1a57b;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 设置类名为'head'的元素的样式，通常用于头部或导航栏 */
+.head {
+    display: flex; /* 使用弹性盒模型 */
+    justify-content: space-between; /* 项之间的空间均匀分布 */
+    padding: 20px 40px; /* 内边距 */
+}
+
+/* 注释掉的另一种头部样式，包括阴影效果 */
+/* .header{
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+} */
+
+/* 设置类名为'head'下的类名为'left'和'right'的元素的样式 */
+.head .left,
+.head .right {
+    display: flex; /* 使用弹性盒模型 */
+    gap: 20px; /* 项之间的间隔为20像素 */
+}
+
+/* 设置类名为'head'下的类名为'name'的元素的字体样式 */
+.head .name {
+    font-size: 30px; /* 字体大小为30像素 */
+    font-weight: bold; /* 粗体字 */
+}
+
+/* 注释掉的另一种字体样式设置 */
+/* .head .name {
+    font-family: 'Playfair Display', serif;
+} */

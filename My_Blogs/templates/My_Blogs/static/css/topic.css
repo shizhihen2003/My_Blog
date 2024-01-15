@@ -1,0 +1,124 @@
+/* 设置所有带有类名'all'的元素的宽度为950像素 */
+.all {
+    width: 950px;
+}
+
+/* 设置ID为'main'和'sidebar'的元素的共同样式 */
+#main,
+#sidebar {
+    display: inline-block; /* 使元素水平排列 */
+    backdrop-filter: blur(5px); /* 背景模糊效果 */
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
+    border-radius: 30px; /* 圆角边框 */
+
+    margin: 20px; /* 外边距为20像素 */
+}
+
+/* 设置ID为'main'的元素的特定样式 */
+#main {
+    width: 664px; /* 宽度为664像素 */
+    /* width: auto; */ /* 被注释的宽度设置为自动 */
+    margin-right: 5px; /* 右边距为5像素 */
+    padding: 20px; /* 内边距为20像素 */
+}
+
+/* 设置ID为'sidebar'的元素的特定样式 */
+#sidebar {
+    width: 200px; /* 宽度为200像素 */
+    margin-left: 5px; /* 左边距为5像素 */
+    padding: 20px 5px 5px 5px; /* 上下左右内边距不同 */
+    position: absolute; /* 绝对定位 */
+    /* 保持这个设置 */
+}
+
+/* 设置类名为'sticky'的元素的样式，使其固定在页面顶部 */
+.sticky {
+    position: fixed; /* 固定位置 */
+    top: 0; /* 距离顶部0像素 */
+}
+
+/* 设置ID为'sidebar'下的<p>元素的样式 */
+#sidebar p {
+    text-indent: 0; /* 段落首行不缩进 */
+}
+
+/* 用于清除浮动效果的类 */
+.clearfloat {
+    clear: both; /* 清除左右浮动 */
+}
+
+/* 设置<img>元素的宽度 */
+img {
+    width: 664px; /* 宽度为664像素 */
+}
+
+/* 设置<p>元素的样式 */
+p {
+    text-indent: 2em; /* 首行缩进两个字体大小的空间 */
+}
+
+/* 设置类名为'user_img'的元素样式，用于用户头像 */
+.user_img {
+    margin: 0 auto; /* 水平居中 */
+    width: 180px; /* 宽度为180像素 */
+    height: 180px; /* 高度为180像素 */
+    border-radius: 50%; /* 圆形头像 */
+    overflow: hidden; /* 超出部分隐藏 */
+}
+
+/* 设置类名为'user_img'下的<img>元素的样式 */
+.user_img img {
+    width: 300px; /* 宽度为300像素 */
+    height: 200px; /* 高度为200像素 */
+}
+
+/* 设置类名为'name'的元素的文本样式 */
+.name {
+    font-size: 20px; /* 字体大小为20像素 */
+    font-weight: bolder; /* 粗体字 */
+    text-align: center; /* 文本居中 */
+}
+
+/* 设置类名为'show'的元素的文本样式 */
+.show {
+    font-size: large; /* 大号字体 */
+    font-weight: bolder; /* 粗体字 */
+    text-align: center; /* 文本居中 */
+}
+
+/* 设置类名为'user_link'下的<ul>元素的样式 */
+.user_link ul {
+    list-style-type: none; /* 无列表符号 */
+    padding: 0; /* 无内边距 */
+    display: flex; /* 弹性盒模型 */
+    justify-content: center; /* 水平居中 */
+    gap: 20px; /* 项之间的间隔为20像素 */
+}
+
+/* 设置类名为'user_link'下的<ul>元素下的<li>元素内<a>元素前的伪元素样式 */
+.user_link ul li a::before {
+    content: ''; /* 无内容 */
+    display: inline-block; /* 行内块元素 */
+    width: 30px; /* 宽度为30像素 */
+    height: 30px; /* 高度为30像素 */
+    background-size: contain; /* 背景大小适应 */
+    background-repeat: no-repeat; /* 背景不重复 */
+    margin-right: 5px; /* 右边距为5像素 */
+}
+
+/* 分别设置不同社交链接的背景图片 */
+.qq-link::before {
+    background-image: url(../image/qq_icon.png); /* QQ图标 */
+}
+
+.wechat-link::before {
+    background-image: url(../image/wechat_icon.png); /* 微信图标 */
+}
+
+.wb-link::before {
+    background-image: url(../image/wb_icon.png); /* 微博图标 */
+}
+
+.csdn-link::before {
+    background-image: url(../image/csdn_icon.png); /* CSDN图标 */
+}
